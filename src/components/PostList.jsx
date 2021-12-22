@@ -5,7 +5,7 @@ import React from "react";
 import PostItem from "./PostItem";
 
 
-const PostList = ({posts, title}) => {
+const PostList = ({posts, title, remove}) => {
     const theme = useTheme();
     if (!posts.length) {
         return (
@@ -30,7 +30,7 @@ const PostList = ({posts, title}) => {
             <Container style={{marginTop: 28}} maxWidth='md'>
                 <Grid container spacing={4}>
                     {posts.map((post, index) => (
-                        <PostItem post={post} index={index + 1} key={post}/>
+                        <PostItem post={post} index={index + 1} key={index} remove={remove}/>
                     ))}
                 </Grid>
             </Container>

@@ -1,7 +1,7 @@
 import { Button, Card, CardActions, CardContent, CardMedia, Grid, Typography } from "@mui/material";
 import React from "react";
 
-const PostItem = ({post, index}) => {
+const PostItem = ({post, index, remove}) => {
     return (
         <Grid item xs={12} sm={6} md={4}>
             <Card>
@@ -13,13 +13,13 @@ const PostItem = ({post, index}) => {
                     <Typography
                         variant="h5"
                     >
-                        {index}. {post.title}
+                        {post.id}. {post.title}
                     </Typography>
                     <Typography>{post.body}</Typography>
                 </CardContent>
                 <CardActions>
                     <Button color="primary" size="small">Open</Button>
-                    <Button color="primary" size="small">Delete</Button>
+                    <Button color="primary" size="small" onClick={() => remove(post)}>Delete</Button>
                 </CardActions>
             </Card>
         </Grid>
