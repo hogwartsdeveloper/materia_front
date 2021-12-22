@@ -1,13 +1,17 @@
 import { Button, Container, Grid, Typography } from "@mui/material";
 import React, { useEffect, useRef, useState } from "react";
 import PostService from "../API/PostService";
+import PostFilter from "../components/PostFilter";
 import PostList from "../components/PostList";
 import { useFetching } from "../hooks/useFetching";
 import { useObserver } from "../hooks/useObserver";
+import { usePosts } from "../hooks/usePosts";
 import { getPageCount } from "../utils/pages";
 
 const Posts = () => {
     const [posts, setPosts] = useState([]);
+    const [filter, setFilter] = useState({sort: '', query: ''});
+    const sortedAndSearchedPosts = usePosts(posts, filter.sort, filter.query);
     const [totalPages, setTotalPages] = useState(0);
     const [limit, setLimit] = useState(10);
     const [page, setPage] = useState(1);
@@ -62,8 +66,10 @@ const Posts = () => {
                         </Grid>
                     </Grid>
                 </Container>
+                <PostFilter filter={filter} setFilter={setFilter}/>
+                
             </Container>
-            <PostList posts={posts} title="Post is API" remove={removePost}/>
+            <PostList posts={sortedAndSearchedPosts} title="Post is API" remove={removePost}/>
             <Container ref={lastElement} style={{height: 20}} />
         </Container>
     );
