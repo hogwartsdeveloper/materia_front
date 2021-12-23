@@ -1,7 +1,9 @@
 import { Button, Card, CardActions, CardContent, CardMedia, Grid, Typography } from "@mui/material";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const PostItem = ({post, index, remove}) => {
+    const router = useNavigate();
     return (
         <Grid item xs={12} sm={6} md={4}>
             <Card>
@@ -18,7 +20,7 @@ const PostItem = ({post, index, remove}) => {
                     <Typography>{post.body}</Typography>
                 </CardContent>
                 <CardActions>
-                    <Button color="primary" size="small">Open</Button>
+                    <Button color="primary" size="small" onClick={() => router(`/posts/${post.id}`)}>Open</Button>
                     <Button color="primary" size="small" onClick={() => remove(post)}>Delete</Button>
                 </CardActions>
             </Card>

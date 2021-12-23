@@ -2,8 +2,12 @@ import React from "react";
 import { AppBar, Button, Container, Typography, Box, Menu, MenuItem, Toolbar, IconButton} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu'
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
-const pages = ["Posts", "About"];
+const pages = [
+    {name: "Posts", path: "/posts"},
+    {name: "About", path: "/"}
+];
 
 const MyNavbar = () => {
     const [anchorElNav, setAnchorElNav] = useState(null);
@@ -29,12 +33,17 @@ const MyNavbar = () => {
                         MATERIA
                     </Typography>
                     <Box sx={{ flexGrow: 1, display: {xs: 'none', md: 'flex'}}}>
-                        {pages.map((page) => (
+                        {pages.map(page => 
                             <Button 
-                                key={page}
-                                sx={{ my: 2, color: 'white', display: 'block'}}
-                            >{page}</Button>
-                        ))}
+                                key={page.path}
+                                sx={{ my: 2, display: 'block'}}
+                            >
+                                <Link
+                                    to={page.path}
+                                    style={{color: 'white', textDecoration: 'none'}}
+                                >{page.name}</Link>
+                            </Button>
+                         )}
                     </Box>
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
                         <IconButton
@@ -64,8 +73,8 @@ const MyNavbar = () => {
                             sx={{ display: { xs: 'block', md: 'none'} }}
                         >
                             {pages.map((page) => 
-                                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                                    <Typography textAlign="center">{page}</Typography>
+                                <MenuItem key={page.path} onClick={handleCloseNavMenu}>
+                                    <Typography textAlign="center">{page.name}</Typography>
                                 </MenuItem>
                             )}
                         </Menu>
