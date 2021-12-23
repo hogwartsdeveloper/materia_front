@@ -4,7 +4,7 @@ import React from "react";
 
 const PostFilter = ({filter, setFilter}) => {
     return (
-        <Container sx={{display: 'flex', alignItems: 'center'}}>
+        <Container sx={{display: 'flex', alignItems: 'center', flexDirection: 'column'}}>
             <InputBase
                 value={filter.query}
                 onChange={e => setFilter({...filter, query: e.target.value})}
@@ -15,10 +15,10 @@ const PostFilter = ({filter, setFilter}) => {
                     boxShadow: '0 2px 6px rgba(0, 0, 0, 0.15',
                     borderRadius: '8px',
                     padding: '15px',
-                    margin: '20px 0 40px 0'
+                    margin: '20px 0 20px 0'
                 }}
             />
-            <FormControl sx={{width: '10%'}}>
+            <FormControl sx={{width: '9em', marginBottom: '4em'}}>
                 <InputLabel id="select-label">Сортировка</InputLabel>
                 <Select
                     labelId="select-label"

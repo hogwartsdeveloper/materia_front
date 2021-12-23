@@ -68,16 +68,17 @@ const Posts = () => {
                     cum quae deserunt saepe veritatis rerum provident dicta repellendus?
                 </Typography>
                 <Container>
-                    <Grid container justifyContent='center'>
-                        <Grid item>
-                            <Button variant="outlined" color="primary" onClick={fetchPosts}>About</Button>
-                        </Grid>
+                    <Grid container justifyContent='center' spacing={2}>
                         <Grid item>
                             <Button variant="outlined" color="primary" onClick={() => setModal(true)}>Create Post</Button>
+                            
+                        </Grid>
+                        <Grid item>
+                            <Button variant="outlined" color="primary" onClick={() => fetchPosts(limit, page)}>Get Posts</Button>
                         </Grid>
                     </Grid>
                 </Container>
-                <MyModal visible={modal} setVisible={setModal}>
+                <MyModal title="Add Post" visible={modal} setVisible={setModal}>
                     <PostForm create={createPost}/>
                 </MyModal>
                 <PostFilter filter={filter} setFilter={setFilter}/>

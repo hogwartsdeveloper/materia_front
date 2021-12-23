@@ -1,4 +1,4 @@
-import { Typography, Modal, Box } from "@mui/material";
+import { Typography, Modal, Box, TextField } from "@mui/material";
 import React from "react";
 
 const style = {
@@ -15,7 +15,7 @@ const style = {
 }
 
 
-const MyModal = ({children, visible, setVisible}) => {
+const MyModal = ({title, children, visible, setVisible}) => {
     const handleClose = () => setVisible(false);
 
     return (
@@ -26,6 +26,14 @@ const MyModal = ({children, visible, setVisible}) => {
                 aria-labelledby="modal-title"
             >
                 <Box sx={style}>
+                <Typography 
+                    id="modal-title" 
+                    variant="h6" 
+                    component="h2"
+                    sx={{textAlign: 'center', marginBottom: "1em"}}
+                >
+                    {title}
+                </Typography>
                     {children}
                 </Box>
             </Modal>
