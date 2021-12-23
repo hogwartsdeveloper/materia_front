@@ -1,7 +1,9 @@
 import { Button, Container, Grid, Typography } from "@mui/material";
 import React, { useEffect, useRef, useState } from "react";
 import PostService from "../API/PostService";
+import MyModal from "../components/MyModal";
 import PostFilter from "../components/PostFilter";
+import PostForm from "../components/PostForm";
 import PostList from "../components/PostList";
 import { useFetching } from "../hooks/useFetching";
 import { useObserver } from "../hooks/useObserver";
@@ -16,6 +18,7 @@ const Posts = () => {
     const [limit, setLimit] = useState(10);
     const [page, setPage] = useState(1);
     const lastElement = useRef();
+    const [modal, setModal] = useState(false);
 
     const [fetchPosts, isPostsLoading, postError] = useFetching(async (limit, page) => {
         const response = await PostService.getAll(limit, page);
@@ -33,6 +36,11 @@ const Posts = () => {
     useEffect(() => {
         fetchPosts(limit, page);
     }, [page, limit]);
+
+    const createPost = (newPost) => {
+        setPosts([...posts, newPost]);
+        setModal(false);
+    }
 
     const removePost = (post) => {
         setPosts(posts.filter(p => p.id !== post.id));
@@ -64,8 +72,14 @@ const Posts = () => {
                         <Grid item>
                             <Button variant="outlined" color="primary" onClick={fetchPosts}>About</Button>
                         </Grid>
+                        <Grid item>
+                            <Button variant="outlined" color="primary" onClick={() => setModal(true)}>Create Post</Button>
+                        </Grid>
                     </Grid>
                 </Container>
+                <MyModal visible={modal} setVisible={setModal}>
+                    <PostForm create={createPost}/>
+                </MyModal>
                 <PostFilter filter={filter} setFilter={setFilter}/>
                 
             </Container>
