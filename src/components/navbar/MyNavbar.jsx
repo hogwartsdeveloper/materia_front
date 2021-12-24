@@ -2,7 +2,7 @@ import React from "react";
 import { AppBar, Button, Container, Typography, Box, Menu, MenuItem, Toolbar, IconButton, createTheme} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu'
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Router, useNavigate } from "react-router-dom";
 import { useStyles } from "./navbarStyle";
 
 
@@ -25,6 +25,8 @@ const MyNavbar = () => {
     const handleCloseNavMenu = () => {
         setAnchorElNav(null);
     };
+
+    const router = useNavigate()
     
     return (
         <AppBar className={classes.navbar}>
@@ -90,7 +92,7 @@ const MyNavbar = () => {
                         </Menu>
                     </Box>
                     <Box className={classes.boxButton}>
-                        <Button sx={{mr: 2}} color="inherit">Log In</Button>
+                        <Button sx={{mr: 2}} color="inherit" onClick={() => router('/signIn')}>Log In</Button>
                         <Button color="inherit" variant="outlined">Sig In</Button>
                     </Box>
                 </Toolbar>
