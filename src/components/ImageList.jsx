@@ -1,17 +1,16 @@
 import { Container, Grid, Typography } from "@mui/material";
 import React from "react";
-import PostItem from "./PostItem";
+import ImageItem from "./ImageItem";
 
-
-const PostList = ({posts, title, remove}) => {
-    if (!posts.length) {
+const ImageList = ({images, title, remove}) => {
+    if (!images.length) {
         return (
             <Typography
                 variant="h2"
                 align="center"
                 color="textPrimary"
             >
-                Посты не найдены!
+                Картинки не найдены!
             </Typography>
         );
     };
@@ -24,15 +23,15 @@ const PostList = ({posts, title, remove}) => {
             >
                 {title}
             </Typography>
-            <Container style={{marginTop: 28}} maxWidth='md'>
+            <Container style={{marginTop: 28}} maxWidth="md">
                 <Grid container spacing={4}>
-                    {posts.map((post, index) => (
-                        <PostItem post={post} index={index + 1} key={index} remove={remove}/>
+                    {images.map((image, index) =>(
+                        <ImageItem image={image} key={index}/>
                     ))}
                 </Grid>
             </Container>
         </Container>
-    )
+    );
 };
 
-export default PostList;
+export default ImageList;

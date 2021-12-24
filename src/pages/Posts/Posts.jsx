@@ -74,7 +74,6 @@ const Posts = () => {
                     cum quae deserunt saepe veritatis rerum provident dicta repellendus?
                 </Typography>
                 <Container>
-                    
                         <Grid container justifyContent='center' spacing={2}>
                             <Grid item>
                                 <Button variant="outlined" color="primary" onClick={() => setModal(true)}>Create Post</Button>

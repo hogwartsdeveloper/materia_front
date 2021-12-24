@@ -8,7 +8,8 @@ import { useStyles } from "./navbarStyle";
 
 const pages = [
     {name: "Posts", path: "/posts"},
-    {name: "About", path: "/"}
+    {name: "Photos", path: "/photos"},
+    {name: "About", path: "/about"}
 ];
 
 const theme = createTheme()
