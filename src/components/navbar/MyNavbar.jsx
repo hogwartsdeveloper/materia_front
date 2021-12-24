@@ -1,15 +1,20 @@
 import React from "react";
-import { AppBar, Button, Container, Typography, Box, Menu, MenuItem, Toolbar, IconButton} from '@mui/material';
+import { AppBar, Button, Container, Typography, Box, Menu, MenuItem, Toolbar, IconButton, createTheme} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu'
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useStyles } from "./navbarStyle";
+
 
 const pages = [
     {name: "Posts", path: "/posts"},
     {name: "About", path: "/"}
 ];
 
+const theme = createTheme()
+
 const MyNavbar = () => {
+    const classes = useStyles(theme);
     const [anchorElNav, setAnchorElNav] = useState(null);
 
     const handleOpenNavMenu = (event) => {
@@ -21,31 +26,31 @@ const MyNavbar = () => {
     };
     
     return (
-        <AppBar position="fixed">
-            <Container fixed>
+        <AppBar className={classes.navbar}>
+            <Container>
                 <Toolbar>
                     <Typography
+                        className={classes.logoP}
                         variant="h6"
-                        noWrap
-                        component="div"
-                        sx={{ mr: 2, display: 'flex'}}
                     >
-                        MATERIA
+                        <Link to="/" className={classes.link}>MATERIA</Link>
                     </Typography>
-                    <Box sx={{ flexGrow: 1, display: {xs: 'none', md: 'flex'}}}>
+                    <Box sx={{ display: {xs: 'none', md: 'flex'}}} className={classes.menuBox}>
                         {pages.map(page => 
                             <Button 
                                 key={page.path}
-                                sx={{ my: 2, display: 'block'}}
+                                color="inherit"
                             >
                                 <Link
                                     to={page.path}
-                                    style={{color: 'white', textDecoration: 'none'}}
-                                >{page.name}</Link>
+                                    className={classes.link}
+                                >
+                                    {page.name}
+                                </Link>
                             </Button>
                          )}
                     </Box>
-                    <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+                    <Box sx={{ display: { xs: 'flex', md: 'none' } }} className={classes.menuBox}>
                         <IconButton
                             size="large"
                             aria-label="account of current user"
@@ -74,14 +79,18 @@ const MyNavbar = () => {
                         >
                             {pages.map((page) => 
                                 <MenuItem key={page.path} onClick={handleCloseNavMenu}>
-                                    <Typography textAlign="center">{page.name}</Typography>
+                                    <Typography>
+                                        <Link to={page.path} className={classes.linkMenu}>
+                                            {page.name}
+                                        </Link>
+                                    </Typography>
                                 </MenuItem>
                             )}
                         </Menu>
                     </Box>
-                    <Box sx={{ flexGrow: 0, display: 'flex' }}>
-                        <Button sx={{my: 2, mr: 2, display: 'block'}} color="inherit">Log In</Button>
-                        <Button sx={{my: 2, display: 'block'}} color="inherit" variant="outlined">Sig In</Button>
+                    <Box className={classes.boxButton}>
+                        <Button sx={{mr: 2}} color="inherit">Log In</Button>
+                        <Button color="inherit" variant="outlined">Sig In</Button>
                     </Box>
                 </Toolbar>
             </Container>
