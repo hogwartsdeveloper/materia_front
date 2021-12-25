@@ -1,6 +1,7 @@
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import { Avatar, Container, CssBaseline, Box, Typography, TextField, Button, FormControlLabel, Checkbox, Grid, Link } from "@mui/material";
+import { Avatar, Container, CssBaseline, Box, Typography, TextField, Button, FormControlLabel, Checkbox, Grid} from "@mui/material";
 import React, { useContext } from "react";
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../context/context';
 
 const SignIn = () => {
@@ -22,7 +23,10 @@ const SignIn = () => {
                     <LockOutlinedIcon/>
                 </Avatar>
                 <Typography component="h1" variant="h5">
-                    Sign In
+                    Войти
+                </Typography>
+                <Typography variant="p" align='center'>
+                    Авторизация сделано по Казахский. Просто нажмите кнопку войти
                 </Typography>
                 <Box component="form" noValidate sx={{mt: 1}} onSubmit={login}>
                     <TextField
@@ -30,7 +34,7 @@ const SignIn = () => {
                         required
                         fullWidth
                         id="email"
-                        label="Email Address"
+                        label="Email Адрес"
                         name="email"
                         autoComplete='email'
                         autoFocus
@@ -40,14 +44,14 @@ const SignIn = () => {
                         required
                         fullWidth
                         id="password"
-                        label="Password"
+                        label="Пароль"
                         name="password"
                         autoComplete='current-password'
                         autoFocus
                     />
                     <FormControlLabel
                         control={<Checkbox value="remember" color='primary' />}
-                        label="Remember me"
+                        label="Запомни меня чувак"
                     />
                     <Button
                         type='submit'
@@ -55,17 +59,17 @@ const SignIn = () => {
                         variant='contained'
                         sx={{ mt: 3, md: 2, marginBottom: '10px' }}
                     >
-                        Sign In
+                        Войти
                     </Button>
                     <Grid container>
                         <Grid item xs>
-                            <Link href='#' variant='body2'>
-                                Forgot password?
+                            <Link to='#' style={{fontSize: '.90rem'}}>
+                                Забыль пароль, мне пофиг ссылка не работет
                             </Link>
                         </Grid>
                         <Grid item>
-                            <Link href='#' variant='body2'>
-                                {"Don't have an account? Sign Up"}
+                            <Link to="/signUp" style={{fontSize: '.90rem'}}>
+                                {"У вас нет аккаунта? Зарегистрируйтесь"}
                             </Link>
                         </Grid>
                     </Grid>

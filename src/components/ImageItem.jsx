@@ -36,8 +36,8 @@ const ImageItem = ({image, index, remove}) => {
                     </Typography>
                 </CardContent>
                 <CardActions>
-                    <Button onClick={() => download()}>Download</Button>
-                    <Button>Delete</Button>
+                    <Button onClick={() => download()}>Скачать</Button>
+                    <Button disabled>Удалить</Button>
                 </CardActions>
             </Card>
         </Grid>

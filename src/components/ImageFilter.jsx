@@ -7,7 +7,7 @@ const ImageFilter = ({filter, setFilter}) => {
             <InputBase
                 value={filter.query}
                 onChange={e => setFilter({...filter, query: e.target.value})}
-                placeholder="Search image"
+                placeholder="Поиск фотографии"
                 style={{
                     width: '90%',
                     border: '1px solid transperent',

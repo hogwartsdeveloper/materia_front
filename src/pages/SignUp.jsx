@@ -17,7 +17,7 @@ const SignUp = () => {
                     <LockOutlinedIcon/>
                 </Avatar>
                 <Typography component="h1" variant="h5">
-                    Sign Up
+                    Зарегистрироваться
                 </Typography>
                 <Box component="form" noValidate sx={{mt: 1}}>
                     <Box component="div" sx={{display: 'flex'}}>
@@ -26,7 +26,7 @@ const SignUp = () => {
                             required
                             fullWidth
                             id="name"
-                            label="Your Name"
+                            label="Ваше Имя"
                             name="name"
                             autoComplete='name'
                             autoFocus
@@ -37,7 +37,7 @@ const SignUp = () => {
                             required
                             fullWidth
                             id="soName"
-                            label="Your So Name"
+                            label="Ваше фамилия"
                             name="soName"
                             autoComplete='soName'
                             autoFocus
@@ -48,7 +48,7 @@ const SignUp = () => {
                         required
                         fullWidth
                         id="email"
-                        label="Your Email"
+                        label="Email"
                         name="email"
                         autoComplete='email'
                         autoFocus
@@ -58,7 +58,7 @@ const SignUp = () => {
                         required
                         fullWidth
                         id="password"
-                        label="Password"
+                        label="Пароль"
                         name="password"
                         autoComplete='current-password'
                         autoFocus
@@ -69,11 +69,11 @@ const SignUp = () => {
                         variant="contained"
                         sx={{ mt: 3, md: 2, marginBottom: '10px' }}
                     >
-                        Sign Up
+                        Зарегистрироваться
                     </Button>
                     <Box sx={{display: 'flex', justifyContent: 'flex-end'}}>
                         <Link to="/signIn">
-                            You have an account? Sign In
+                            Регистрация не работает просто войдите
                         </Link>
                     </Box>
                     

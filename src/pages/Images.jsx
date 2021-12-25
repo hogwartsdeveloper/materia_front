@@ -45,10 +45,10 @@ const Images = () => {
                 <Container>
                     <Grid container justifyContent='center' spacing={2}>
                         <Grid item>
-                            <Button variant="outlined">Upload</Button>
+                            <Button variant="outlined" disabled>Загрузить</Button>
                         </Grid>
                         <Grid item>
-                            <Button variant="outlined">Download</Button>
+                            <Button variant="outlined" disabled>Скачать</Button>
                         </Grid>
                     </Grid>
                 </Container>
@@ -63,7 +63,7 @@ const Images = () => {
                     Произошло ошибка "{imageError}"
                 </Typography>
             }
-            <ImageList images={sortedAndSearchedImages} title="Images is API" isLoading={isImagesLoading}/>
+            <ImageList images={sortedAndSearchedImages} title="Фотографии из pixels.com" isLoading={isImagesLoading}/>
             <Container ref={lastElement} style={{height: '10px'}} />
             {isImagesLoading && <Loader/>}
         </Container>

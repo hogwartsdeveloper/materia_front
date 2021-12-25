@@ -9,16 +9,14 @@ const Header = () => {
                 gutterBottom
                 sx={{textAlign: 'center', color: 'primary'}}
             >
-                For learning Material UI
+                Это мой гомункул 
             </Typography>
             <Typography
                 sx={{textAlign: 'center', color: 'secondary'}}
                 variant="h5"
                 paragraph
             >
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
-                Sequi ex mollitia, esse blanditiis iure deleniti a, 
-                cum quae deserunt saepe veritatis rerum provident dicta repellendus?
+                В проекте используется два API. Примите на работу, а то я буду дальше создовать своих гомункулов.
             </Typography>
         </Container>
     );

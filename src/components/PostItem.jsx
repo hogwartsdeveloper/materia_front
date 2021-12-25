@@ -21,8 +21,8 @@ const PostItem = ({post, index, remove}) => {
                     <Typography>{post.body}</Typography>
                 </CardContent>
                 <CardActions>
-                    <Button color="primary" size="small" onClick={() => router(`/posts/${post.id}`)}>Open</Button>
-                    <Button color="primary" size="small" onClick={() => remove(post)}>Delete</Button>
+                    <Button color="primary" size="small" onClick={() => router(`/posts/${post.id}`)}>Открыть</Button>
+                    <Button color="primary" size="small" onClick={() => remove(post)}>Удалить</Button>
                 </CardActions>
             </Card>
         </Grid>

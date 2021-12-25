@@ -9,12 +9,11 @@ import { AccountCircle } from "@mui/icons-material";
 
 
 const pages = [
-    {name: "Photos", path: "/photos"},
-    {name: "Posts", path: "/posts"},
-    {name: "About", path: "/about"}
+    {name: "фотографии", path: "/photos"},
+    {name: "Посты", path: "/posts"}
 ];
 
-const settings = ["Logout"];
+const settings = ["Выйти"];
 
 const theme = createTheme()
 
@@ -113,7 +112,7 @@ const MyNavbar = () => {
                     {isAuth
                         ?
                         <Box sx={{ flexGrow: 0 }}>
-                            <Tooltip title="Open settings">
+                            <Tooltip title="Открыть настройки">
                                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                                     <AccountCircle/>
                                 </IconButton>

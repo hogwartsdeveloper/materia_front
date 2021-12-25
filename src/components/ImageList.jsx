@@ -18,7 +18,7 @@ const ImageList = ({images, title, remove, isLoading}) => {
     return (
         <Container>
             <Typography
-                variant="h2"
+                variant="h5"
                 align="center"
             >
                 {title}

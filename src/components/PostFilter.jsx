@@ -7,7 +7,7 @@ const PostFilter = ({filter, setFilter}) => {
             <InputBase
                 value={filter.query}
                 onChange={e => setFilter({...filter, query: e.target.value})}
-                placeholder="Search post"
+                placeholder="Поиск постов"
                 style={{
                     width: '90%', 
                     border: '1px solid transperent', 

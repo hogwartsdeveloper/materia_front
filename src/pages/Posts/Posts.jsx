@@ -62,15 +62,15 @@ const Posts = () => {
                 <Container>
                         <Grid container justifyContent='center' spacing={2}>
                             <Grid item>
-                                <Button variant="outlined" color="secondary" onClick={() => setModal(true)}>Create Post</Button>
+                                <Button variant="outlined" color="secondary" onClick={() => setModal(true)}>Создать пост</Button>
                             </Grid>
                             <Grid item>
-                                <Button variant="outlined" color="secondary" onClick={() => fetchPosts(limit, page)}>Get Posts</Button>
+                                <Button variant="outlined" color="secondary" onClick={() => fetchPosts(limit, page)}>Загрузить посты</Button>
                             </Grid>
                         </Grid>
                     
                 </Container>
-                <MyModal title="Add Post" visible={modal} setVisible={setModal}>
+                <MyModal title="Добавить пост" visible={modal} setVisible={setModal}>
                     <PostForm create={createPost}/>
                 </MyModal>
                 <PostFilter filter={filter} setFilter={setFilter}/>
@@ -85,7 +85,7 @@ const Posts = () => {
                     Произошло ошибка "{postError}"
                 </Typography>
             }
-            <PostList posts={sortedAndSearchedPosts} title="Post is API" remove={removePost} isLoading={isPostsLoading}/>
+            <PostList posts={sortedAndSearchedPosts} title="Посты из jsonplaceholder.typicode.com" remove={removePost} isLoading={isPostsLoading}/>
             <Container ref={lastElement} style={{height: '10px'}} />
 
             {isPostsLoading &&
