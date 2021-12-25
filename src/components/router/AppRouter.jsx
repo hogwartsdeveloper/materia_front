@@ -31,7 +31,7 @@ const AppRouter = () => {
                         key={route.path}
                     />
                 )}
-                <Route path="*" element={<Navigate to="/posts" />} />
+                <Route path="*" element={<Navigate to="/photos" />} />
             </Routes>
             :
             <Routes>

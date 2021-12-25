@@ -9,8 +9,8 @@ import { AccountCircle } from "@mui/icons-material";
 
 
 const pages = [
-    {name: "Posts", path: "/posts"},
     {name: "Photos", path: "/photos"},
+    {name: "Posts", path: "/posts"},
     {name: "About", path: "/about"}
 ];
 

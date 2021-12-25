@@ -6,7 +6,7 @@ import SignIn from "../../pages/SignIn";
 import SignUp from "../../pages/SignUp";
 
 export const privateRoutes = [
-    {path: '/', component: <Posts/>, exact: true},
+    {path: '/', component: <Images/>, exact: true},
     {path: '/photos', component: <Images/>, exact: true},
     {path: '/posts', component: <Posts/>, exact: true},
     {path: '/posts/:id', component: <PostIdPage/>, exact: true}
