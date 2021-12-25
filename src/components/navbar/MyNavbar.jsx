@@ -92,8 +92,8 @@ const MyNavbar = () => {
                         </Menu>
                     </Box>
                     <Box className={classes.boxButton}>
-                        <Button sx={{mr: 2}} color="inherit" onClick={() => router('/signIn')}>Log In</Button>
-                        <Button color="inherit" variant="outlined">Sig In</Button>
+                        <Button sx={{mr: 2}} color="inherit" onClick={() => router('/signIn')}>Sign In</Button>
+                        <Button color="inherit" variant="outlined" onClick={() => router('/signUp')}>Sign Up</Button>
                     </Box>
                 </Toolbar>
             </Container>
