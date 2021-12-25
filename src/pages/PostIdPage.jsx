@@ -1,5 +1,4 @@
 import { Container, Typography, Box, Avatar } from "@mui/material";
-import { width } from "@mui/system";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import PostService from "../API/PostService";
@@ -12,12 +11,12 @@ const PostIdPage = () => {
     const [post, setPost] = useState({});
     const [comments, setComments] = useState([]);
 
-    const [fetchPostById, isLoading, error] = useFetching(async (id) => {
+    const [fetchPostById, isLoading] = useFetching(async (id) => {
         const response = await PostService.getById(id);
         setPost(response.data);
     });
 
-    const [fetchComments, isComLoading, comError] = useFetching(async (id) => {
+    const [fetchComments, isComLoading] = useFetching(async (id) => {
         const response = await PostService.getCommentsByPostId(id);
         setComments(response.data);
     });
@@ -55,7 +54,7 @@ const PostIdPage = () => {
                 <Box
                     sx={{textAlign: 'center'}}
                 >
-                    <img src="https://habrastorage.org/r/w1560/webt/pu/no/zh/punozh3zkth3cqyppf_przd5wco.png" style={{width: '100%'}}/>
+                    <img src="https://habrastorage.org/r/w1560/webt/pu/no/zh/punozh3zkth3cqyppf_przd5wco.png" alt="Post img" style={{width: '100%'}}/>
                 </Box>
                 <Typography sx={{margin: '20px 0', borderBottom: '1px solid #d5dddf', paddingBottom: '20px'}}>{post.body}</Typography>
                 <Box>

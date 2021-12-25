@@ -1,5 +1,4 @@
 import { Container, FormControl, InputBase, InputLabel, MenuItem, Select } from "@mui/material";
-import { padding } from "@mui/system";
 import React from "react";
 
 const PostFilter = ({filter, setFilter}) => {

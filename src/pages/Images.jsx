@@ -8,11 +8,12 @@ import Loader from "../components/Loader/Loader";
 import { useFetching } from "../hooks/useFetching";
 import { useImages } from "../hooks/useImages";
 import ImageFilter from "../components/ImageFilter";
+import Header from "../components/Header";
 
 const Images = () => {
     const [images, setImages] = useState([]);
     const [totalPages, setTotalPages] = useState(0);
-    const [limit, setLimit] = useState(10);
+    const [limit] = useState(10);
     const [page, setPage] = useState(1);
     const lastElement = useRef()
     const [filter, setFilter] = useState({sort: '', query: ''});
@@ -40,22 +41,7 @@ const Images = () => {
     return (
         <Container>
             <Container sx={{maxWidth: 'md', marginTop: '100px'}}>
-                <Typography
-                    variant="h2"
-                    gutterBottom
-                    sx={{textAlign: 'center', color: 'primary'}}
-                >
-                    For learning Material
-                </Typography>
-                <Typography
-                    sx={{textAlign: 'center', color: 'secondary'}}
-                    variant="h5"
-                    paragraph
-                >
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
-                    Sequi ex mollitia, esse blanditiis iure deleniti a, 
-                    cum quae deserunt saepe veritatis rerum provident dicta repellendus?
-                </Typography>
+                <Header/>
                 <Container>
                     <Grid container justifyContent='center' spacing={2}>
                         <Grid item>

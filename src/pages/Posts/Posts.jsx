@@ -1,6 +1,7 @@
-import { Button, Container, createTheme, Grid, Typography, Box } from "@mui/material";
+import { Button, Container, createTheme, Grid, Typography } from "@mui/material";
 import React, { useEffect, useRef, useState } from "react";
 import PostService from "../../API/PostService";
+import Header from "../../components/Header";
 import Loader from "../../components/Loader/Loader";
 import MyModal from "../../components/MyModal";
 import PostFilter from "../../components/PostFilter";
@@ -23,7 +24,7 @@ const Posts = () => {
     const [filter, setFilter] = useState({sort: '', query: ''});
     const sortedAndSearchedPosts = usePosts(posts, filter.sort, filter.query);
     const [totalPages, setTotalPages] = useState(0);
-    const [limit, setLimit] = useState(10);
+    const [limit] = useState(10);
     const [page, setPage] = useState(1);
     const lastElement = useRef();
     const [modal, setModal] = useState(false);
@@ -57,29 +58,14 @@ const Posts = () => {
     return (
         <Container>
             <Container className={classes.container}>
-                <Typography
-                    className={classes.hiTitle}
-                    variant="h2"
-                    gutterBottom
-                >
-                    For learning Meterial
-                </Typography>
-                <Typography
-                    className={classes.hiDescription}
-                    variant="h5"
-                    paragraph
-                >
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
-                    Sequi ex mollitia, esse blanditiis iure deleniti a, 
-                    cum quae deserunt saepe veritatis rerum provident dicta repellendus?
-                </Typography>
+                <Header/>
                 <Container>
                         <Grid container justifyContent='center' spacing={2}>
                             <Grid item>
-                                <Button variant="outlined" color="primary" onClick={() => setModal(true)}>Create Post</Button>
+                                <Button variant="outlined" color="secondary" onClick={() => setModal(true)}>Create Post</Button>
                             </Grid>
                             <Grid item>
-                                <Button variant="outlined" color="primary" onClick={() => fetchPosts(limit, page)}>Get Posts</Button>
+                                <Button variant="outlined" color="secondary" onClick={() => fetchPosts(limit, page)}>Get Posts</Button>
                             </Grid>
                         </Grid>
                     

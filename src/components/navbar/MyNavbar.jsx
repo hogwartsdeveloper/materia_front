@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { AppBar, Button, Container, Typography, Box, Menu, MenuItem, Toolbar, IconButton, createTheme, Tooltip} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu'
 import { useState } from "react";
-import { Link, Router, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useStyles } from "./navbarStyle";
 import { AuthContext } from "../../context/context";
 import { AccountCircle } from "@mui/icons-material";
