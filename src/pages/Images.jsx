@@ -68,7 +68,7 @@ const Images = () => {
                 </Container>
                 <ImageFilter filter={filter} setFilter={setFilter}/>
             </Container>
-            <ImageList images={sortedAndSearchedImages} title="Images is API"/>
+            <ImageList images={sortedAndSearchedImages} title="Images is API" isLoading={isImagesLoading}/>
             <Container ref={lastElement} style={{height: '10px'}} />
             {isImagesLoading && <Loader/>}
         </Container>

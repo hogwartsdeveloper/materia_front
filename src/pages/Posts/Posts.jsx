@@ -90,13 +90,13 @@ const Posts = () => {
                 <PostFilter filter={filter} setFilter={setFilter}/>
                 
             </Container>
-            <PostList posts={sortedAndSearchedPosts} title="Post is API" remove={removePost}/>
+            <PostList posts={sortedAndSearchedPosts} title="Post is API" remove={removePost} isLoading={isPostsLoading}/>
             <Container ref={lastElement} style={{height: '10px'}} />
 
             {isPostsLoading &&
                 <Loader/>
             }
-            
+
         </Container>
     );
 };

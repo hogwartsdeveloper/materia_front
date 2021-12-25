@@ -3,8 +3,8 @@ import React from "react";
 import PostItem from "./PostItem";
 
 
-const PostList = ({posts, title, remove}) => {
-    if (!posts.length) {
+const PostList = ({posts, title, remove, isLoading}) => {
+    if (!posts.length && !isLoading) {
         return (
             <Typography
                 variant="h2"

@@ -2,8 +2,8 @@ import { Container, Grid, Typography } from "@mui/material";
 import React from "react";
 import ImageItem from "./ImageItem";
 
-const ImageList = ({images, title, remove}) => {
-    if (!images.length) {
+const ImageList = ({images, title, remove, isLoading}) => {
+    if (!images.length && !isLoading) {
         return (
             <Typography
                 variant="h2"
