@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { AppBar, Button, Container, Typography, Box, Menu, MenuItem, Toolbar, IconButton, createTheme} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu'
 import { useState } from "react";
 import { Link, Router, useNavigate } from "react-router-dom";
 import { useStyles } from "./navbarStyle";
+import { AuthContext } from "../../context/context";
 
 
 const pages = [
@@ -15,6 +16,7 @@ const pages = [
 const theme = createTheme()
 
 const MyNavbar = () => {
+    const {setIsAuth} = useContext(AuthContext);
     const classes = useStyles(theme);
     const [anchorElNav, setAnchorElNav] = useState(null);
 
@@ -24,6 +26,11 @@ const MyNavbar = () => {
 
     const handleCloseNavMenu = () => {
         setAnchorElNav(null);
+    };
+
+    const logout = () => {
+        setIsAuth(false);
+        localStorage.removeItem('auth');
     };
 
     const router = useNavigate()
@@ -94,6 +101,7 @@ const MyNavbar = () => {
                     <Box className={classes.boxButton}>
                         <Button sx={{mr: 2}} color="inherit" onClick={() => router('/signIn')}>Sign In</Button>
                         <Button color="inherit" variant="outlined" onClick={() => router('/signUp')}>Sign Up</Button>
+                        <Button sx={{mr: 2}} color="inherit" onClick={logout}>Logout</Button>
                     </Box>
                 </Toolbar>
             </Container>

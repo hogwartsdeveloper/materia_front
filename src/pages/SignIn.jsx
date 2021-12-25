@@ -1,8 +1,17 @@
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { Avatar, Container, CssBaseline, Box, Typography, TextField, Button, FormControlLabel, Checkbox, Grid, Link } from "@mui/material";
-import React from "react";
+import React, { useContext } from "react";
+import { AuthContext } from '../context/context';
 
 const SignIn = () => {
+    const {setIsAuth} = useContext(AuthContext);
+
+    const login = event => {
+        event.preventDefault();
+        setIsAuth(true);
+        localStorage.setItem('auth', 'true');
+    };
+
     return (
         <Container component="main" maxWidth="xs">
             <CssBaseline/>
@@ -15,7 +24,7 @@ const SignIn = () => {
                 <Typography component="h1" variant="h5">
                     Sign In
                 </Typography>
-                <Box component="form" noValidate sx={{mt: 1}}>
+                <Box component="form" noValidate sx={{mt: 1}} onSubmit={login}>
                     <TextField
                         margin="normal"
                         required
