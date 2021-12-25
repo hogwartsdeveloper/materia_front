@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
-import { AppBar, Button, Container, Typography, Box, Menu, MenuItem, Toolbar, IconButton, createTheme} from '@mui/material';
+import { AppBar, Button, Container, Typography, Box, Menu, MenuItem, Toolbar, IconButton, createTheme, Tooltip} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu'
 import { useState } from "react";
 import { Link, Router, useNavigate } from "react-router-dom";
 import { useStyles } from "./navbarStyle";
 import { AuthContext } from "../../context/context";
+import { AccountCircle } from "@mui/icons-material";
 
 
 const pages = [
@@ -13,20 +14,31 @@ const pages = [
     {name: "About", path: "/about"}
 ];
 
+const settings = ["Logout"];
+
 const theme = createTheme()
 
 const MyNavbar = () => {
-    const {setIsAuth} = useContext(AuthContext);
+    const {isAuth, setIsAuth} = useContext(AuthContext);
     const classes = useStyles(theme);
     const [anchorElNav, setAnchorElNav] = useState(null);
+    const [anchorElUser, setAnchorElUser] = useState(null);
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
     };
 
+    const handleOpenUserMenu = (event) => {
+        setAnchorElUser(event.currentTarget);
+    };
+
     const handleCloseNavMenu = () => {
         setAnchorElNav(null);
     };
+
+    const handleCloseUserMenu = () => {
+        setAnchorElUser(null);
+    }
 
     const logout = () => {
         setIsAuth(false);
@@ -98,11 +110,43 @@ const MyNavbar = () => {
                             )}
                         </Menu>
                     </Box>
-                    <Box className={classes.boxButton}>
-                        <Button sx={{mr: 2}} color="inherit" onClick={() => router('/signIn')}>Sign In</Button>
-                        <Button color="inherit" variant="outlined" onClick={() => router('/signUp')}>Sign Up</Button>
-                        <Button sx={{mr: 2}} color="inherit" onClick={logout}>Logout</Button>
-                    </Box>
+                    {isAuth
+                        ?
+                        <Box sx={{ flexGrow: 0 }}>
+                            <Tooltip title="Open settings">
+                                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                                    <AccountCircle/>
+                                </IconButton>
+                            </Tooltip>
+                            <Menu
+                                sx={{ mt: '45px' }}
+                                id="menu-appbar"
+                                anchorEl={anchorElUser}
+                                anchorOrigin={{
+                                    vertical: 'top',
+                                    horizontal: 'right'
+                                }}
+                                keepMounted
+                                transformOrigin={{
+                                    vertical: 'top',
+                                    horizontal: 'right'
+                                }}
+                                open={Boolean(anchorElUser)}
+                                onClose={handleCloseUserMenu}
+                            >
+                                {settings.map((setting) => (
+                                    <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                                        <Typography textAlign="center" onClick={logout}>{setting}</Typography>
+                                    </MenuItem>
+                                ))}
+                            </Menu>
+                        </Box>
+                        :
+                        <Box className={classes.boxButton}>
+                            <Button sx={{mr: 2}} color="inherit" onClick={() => router('/signIn')}>Sign In</Button>
+                            <Button color="inherit" variant="outlined" onClick={() => router('/signUp')}>Sign Up</Button>
+                        </Box>
+                    }
                 </Toolbar>
             </Container>
         </AppBar>
