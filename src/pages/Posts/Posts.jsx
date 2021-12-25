@@ -90,6 +90,15 @@ const Posts = () => {
                 <PostFilter filter={filter} setFilter={setFilter}/>
                 
             </Container>
+            {postError &&
+                <Typography
+                    variant="h3"
+                    align="center"
+                    color="textPrimary"
+                >
+                    Произошло ошибка "{postError}"
+                </Typography>
+            }
             <PostList posts={sortedAndSearchedPosts} title="Post is API" remove={removePost} isLoading={isPostsLoading}/>
             <Container ref={lastElement} style={{height: '10px'}} />
 

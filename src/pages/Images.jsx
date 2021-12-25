@@ -68,6 +68,15 @@ const Images = () => {
                 </Container>
                 <ImageFilter filter={filter} setFilter={setFilter}/>
             </Container>
+            {imageError &&
+                <Typography
+                    variant="h3"
+                    align="center"
+                    color="textPrimary"
+                >
+                    Произошло ошибка "{imageError}"
+                </Typography>
+            }
             <ImageList images={sortedAndSearchedImages} title="Images is API" isLoading={isImagesLoading}/>
             <Container ref={lastElement} style={{height: '10px'}} />
             {isImagesLoading && <Loader/>}
