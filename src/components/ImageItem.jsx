@@ -4,8 +4,6 @@ import { Link } from "react-router-dom";
 
 const ImageItem = ({image, index, remove}) => {
 
-    console.log(image.src.large)
-
     function toDataURL(url) {
         return fetch(url).then((response) => {
                 return response.blob();

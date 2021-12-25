@@ -1,20 +1,38 @@
-import { CardMedia, Container, Grid, ImageListItem, Typography, Card, Button} from "@mui/material";
-import React, { useEffect, useState } from "react";
+import { Container, Grid, Typography, Button} from "@mui/material";
+import React, { useEffect, useRef, useState } from "react";
 import PixelsService from "../API/PixelsService";
-import { useFetching } from "../hooks/useFetching";
+import { useObserver } from "../hooks/useObserver";
+import { getPageCount } from "../utils/pages";
 import ImageList from "../components/ImageList";
+import Loader from "../components/Loader/Loader";
+import { useFetching } from "../hooks/useFetching";
 
 const Images = () => {
     const [images, setImages] = useState([]);
+    const [totalPages, setTotalPages] = useState(0);
+    const [limit, setLimit] = useState(10);
+    const [page, setPage] = useState(1);
+    const lastElement = useRef()
 
-    const [fetchImages, isImagesLoading, imageError] = useFetching(async () => {
-        const response = await PixelsService.getAll();
+    const [fetchImages, isImagesLoading, imageError] = useFetching(async (limit, page) => {
+        const response = await PixelsService.getAll(limit, page);
         setImages([...images, ...response.data.photos]);
+
+        const totalCount = response.data.total_results;
+        setTotalPages(getPageCount(totalCount, limit));
+    });
+
+
+    useObserver(lastElement, page < totalPages, isImagesLoading, () => {
+        setPage(page + 1);
     });
 
     useEffect(() => {
-        fetchImages();
-    }, []);
+        fetchImages(limit, page);
+        
+    }, [page, limit]);
+
+
     return (
         <Container>
             <Container sx={{maxWidth: 'md', marginTop: '100px'}}>
@@ -46,6 +64,8 @@ const Images = () => {
                 </Container>
             </Container>
             <ImageList images={images} title="Images is API"/>
+            <Container ref={lastElement} style={{height: '10px'}} />
+            {isImagesLoading && <Loader/>}
         </Container>
     )
 };

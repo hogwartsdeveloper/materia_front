@@ -3,6 +3,7 @@ import { width } from "@mui/system";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import PostService from "../API/PostService";
+import Loader from "../components/Loader/Loader";
 import PostCommentForm from "../components/PostCommentForm";
 import { useFetching } from "../hooks/useFetching";
 
@@ -41,12 +42,16 @@ const PostIdPage = () => {
                     borderRadius: '4px'
                 }}
             >
-                <Typography
-                    variant="h4"
-                    sx={{marginBottom: '5%', paddingTop: '5%'}}
-                >
-                    {post.id}. {post.title}
-                </Typography>
+                {isLoading
+                    ? <Loader/>
+                    : <Typography
+                          variant="h4"
+                          sx={{marginBottom: '5%', paddingTop: '5%'}}
+                      >
+                          {post.id}. {post.title}
+                      </Typography>
+                }
+                
                 <Box
                     sx={{textAlign: 'center'}}
                 >
@@ -55,19 +60,24 @@ const PostIdPage = () => {
                 <Typography sx={{margin: '20px 0', borderBottom: '1px solid #d5dddf', paddingBottom: '20px'}}>{post.body}</Typography>
                 <Box>
                     <Typography sx={{margin: '40px 0 20px', borderBottom: '1px solid #d5dddf', paddingBottom: '20px'}}>Комментарии {comments.length}</Typography>
-                    {comments.map(comment =>
-                        <Box key={comment.id} sx={{}}>
-                            <Box sx={{display: 'flex', borderBottom: '1px solid #d5dddf', padding: '20px 10px'}}>
-                                <Avatar />
-                                <Box sx={{marginLeft: '10px'}}>
-                                    <Typography>{comment.email}</Typography>
-                                    <Typography sx={{padding: '5px 0'}}>{comment.body}</Typography>
+                    {isComLoading
+                        ? <Loader/>
+                        : <Box>
+                            {comments.map(comment =>
+                                <Box key={comment.id} sx={{}}>
+                                    <Box sx={{display: 'flex', borderBottom: '1px solid #d5dddf', padding: '20px 10px'}}>
+                                        <Avatar />
+                                        <Box sx={{marginLeft: '10px'}}>
+                                            <Typography>{comment.email}</Typography>
+                                            <Typography sx={{padding: '5px 0'}}>{comment.body}</Typography>
+                                        </Box>
+                                        
+                                    </Box>
                                 </Box>
-                                
-                            </Box>
-                            
-                        </Box>
-                    )}
+                                )}
+                          </Box>
+                    }
+                    
                 </Box>
                 <Typography sx={{margin: '40px 0 20px', borderBottom: '1px solid #d5dddf', paddingBottom: '20px'}}>Добавить комментарии</Typography>
                 <PostCommentForm create={createComment}/>

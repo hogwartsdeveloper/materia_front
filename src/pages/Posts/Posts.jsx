@@ -1,7 +1,7 @@
-import { Button, Container, createTheme, Grid, Typography } from "@mui/material";
-import { ThemeProvider } from "@mui/styles";
+import { Button, Container, createTheme, Grid, Typography, Box } from "@mui/material";
 import React, { useEffect, useRef, useState } from "react";
 import PostService from "../../API/PostService";
+import Loader from "../../components/Loader/Loader";
 import MyModal from "../../components/MyModal";
 import PostFilter from "../../components/PostFilter";
 import PostForm from "../../components/PostForm";
@@ -91,7 +91,12 @@ const Posts = () => {
                 
             </Container>
             <PostList posts={sortedAndSearchedPosts} title="Post is API" remove={removePost}/>
-            <Container ref={lastElement} style={{height: 20}} />
+            <Container ref={lastElement} style={{height: '10px'}} />
+
+            {isPostsLoading &&
+                <Loader/>
+            }
+            
         </Container>
     );
 };

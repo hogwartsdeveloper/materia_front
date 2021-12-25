@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { AuthContext } from "../../context/context";
+import Loader from "../Loader/Loader";
 import { privateRoutes, publicRoutes } from "./routs";
 
 const AppRouter = () => {
@@ -13,6 +14,10 @@ const AppRouter = () => {
         }
         setLoading(false);
     }, []);
+
+    if (isLoading) {
+        return <Loader/>
+    }
 
     return (
         isAuth
