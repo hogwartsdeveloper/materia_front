@@ -11,7 +11,7 @@ export default class PixelsService {
                 per_page: limit
             }
         });
-        
+        console.log(response.data);
         return response;
     }
 };

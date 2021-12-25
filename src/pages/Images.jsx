@@ -6,6 +6,8 @@ import { getPageCount } from "../utils/pages";
 import ImageList from "../components/ImageList";
 import Loader from "../components/Loader/Loader";
 import { useFetching } from "../hooks/useFetching";
+import { useImages } from "../hooks/useImages";
+import ImageFilter from "../components/ImageFilter";
 
 const Images = () => {
     const [images, setImages] = useState([]);
@@ -13,6 +15,8 @@ const Images = () => {
     const [limit, setLimit] = useState(10);
     const [page, setPage] = useState(1);
     const lastElement = useRef()
+    const [filter, setFilter] = useState({sort: '', query: ''});
+    const sortedAndSearchedImages = useImages(images, filter.sort, filter.query);
 
     const [fetchImages, isImagesLoading, imageError] = useFetching(async (limit, page) => {
         const response = await PixelsService.getAll(limit, page);
@@ -62,8 +66,9 @@ const Images = () => {
                         </Grid>
                     </Grid>
                 </Container>
+                <ImageFilter filter={filter} setFilter={setFilter}/>
             </Container>
-            <ImageList images={images} title="Images is API"/>
+            <ImageList images={sortedAndSearchedImages} title="Images is API"/>
             <Container ref={lastElement} style={{height: '10px'}} />
             {isImagesLoading && <Loader/>}
         </Container>
